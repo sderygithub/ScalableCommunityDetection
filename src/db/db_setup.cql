@@ -1,18 +1,16 @@
 //cqlsh
 //scp -r -i ~/.ssh/insight-sebastien.pem /Users/sdery/GitHub/HararyProject/src/db/db_setup.cql namenode:~/graph_data/db_setup.cql
 
-CREATE KEYSPACE playground WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
+CREATE KEYSPACE harary WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
 
-USE playground;
+USE harary;
 
-CREATE TABLE email (id text, date text, time timestamp, fname text, lname text, message text, PRIMARY KEY ((id, date), time), ) WITH CLUSTERING ORDER BY (time DESC);
+//The second column of in a compound primary key is known as the "clustering column." This is the column that determines the on-disk sort order of data within a partitioning key. Note that last part in italics, because it is important. 
+//When you query your Stocks column family (table) by id, all "rows" of column values for that id will be returned, sorted by time. In Cassandra you can only specify order within a partitioning key (and not for your entire table), and your partitioning key is the first key listed in a compound primary key.
 
-INSERT INTO email (id, date, time, fname, lname, message) VALUES ('ronak@insightdataengineering.com', '2015-09-01', '2015-09-01 10:03:00', 'Ronak', 'Nathani', 'Welcome to Insight!');
-INSERT INTO email (id, date, time, fname, lname, message) VALUES ('ronak@insightdataengineering.com', '2015-09-01', '2015-09-01 12:10:00', 'Ronak', 'Nathani', 'We are sure you will build great things at Insight!');
-INSERT INTO email (id, date, time, fname, lname, message) VALUES ('ronak@insightdataengineering.com', '2015-09-03', '2015-09-03 14:23:00', 'Ronak', 'Nathani', 'Very excited to work with you all');
-INSERT INTO email (id, date, time, fname, lname, message) VALUES ('austin@insightdataengineering.com', '2015-09-01', '2015-09-01 10:13:00', 'Austin', 'Ouyang', 'Your goal is to become an awesome data engineer at a top tier company');
-INSERT INTO email (id, date, time, fname, lname, message) VALUES ('austin@insightdataengineering.com', '2015-09-02', '2015-09-02 09:46:00', 'Austin', 'Ouyang', 'We have happy hours on every Friday!');
-INSERT INTO email (id, date, time, fname, lname, message) VALUES ('austin@insightdataengineering.com', '2015-09-01', '2015-09-01 10:13:00', 'Austin', 'Ouyang', 'If you are stuck, ask us or your fellow Fellows.');
-INSERT INTO email (id, date, time, fname, lname, message) VALUES ('david@insightdataengineering.com', '2015-09-01', '2015-09-01 11:00:00', 'David', 'Drummond', 'In the next 4 weeks, you will meet data teams from great companies.');
+// Create yearly first-degree graph table
+CREATE TABLE graph (source text, date text, target value, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DESC);
 
-//SELECT * FROM email WHERE id = 'david@insightdataengineering.com' and date='2015-09-01' and time < '2015-09-01 14:00:00';
+// Create yearly community table
+CREATE TABLE community (source text, date text, community value, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DESC);
+
