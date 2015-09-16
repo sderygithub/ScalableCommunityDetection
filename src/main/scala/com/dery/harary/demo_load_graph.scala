@@ -1,3 +1,5 @@
+package com.dery.harary
+
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
@@ -74,7 +76,7 @@ object Main {
         Edge(fields(0).toLong, fields(1).toLong, "Connected")
       }
     */
-
+    /*
     val inputHashFunc = if (ipaddress) (id:String) => IpAddress.toLong(id) else (id:String) => id.toLong
     var edgeRDD = sc.textFile(filename, 3).map(row=> {
         val tokens = row.split(edgedelimiter).map(_.trim())
@@ -93,5 +95,6 @@ object Main {
   
     println("SD> INFO: Number of edges: " + graph.numEdges);
     println("SD> INFO: Number of vertices: " + graph.numVertices);
+    */
   }
 }
