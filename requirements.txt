@@ -1,2 +1,2 @@
 sudo apt-get install python-pip
-pip install cassandra-driver
+sudo pip install cassandra-driver
