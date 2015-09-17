@@ -1,7 +1,7 @@
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
 
-import com.datastax.spark.connector._           //Imports basic rdd functions
+import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql._
 
 /*
@@ -11,12 +11,11 @@ spark-submit --class demo_insert --master spark://ip-172-31-28-44:7077 --jars li
 
 object demo_insert {
     
-
     def main(args: Array[String]) {
 
         println("========================================")
-        println("Simple Graph Application")
-        println("- by Sebastien Dery")    
+        println("      Populating Cassandra Demo")
+        println("         - by Sebastien Dery")    
         println("========================================")
 
         var AppName = "DemoInsert"
@@ -36,7 +35,12 @@ object demo_insert {
         println("SD> INFO: Cassandra Connector Initiated")
 
         //source text, date text, target set<text>, community text, community_member set<text>, node_degree text,
+        println("SD> INFO: Parallelizing RDD collection")
         val collection = sc.parallelize(Seq(("1", "1999", Set("24","343"),"2", Set("24"), "2")))
+
+        println("SD> INFO: Saving to Cassandra")
         collection.saveToCassandra("harary", "graph", SomeColumns("source", "date", "target", "community", "community_member", "node_degree"))
+        
+        println("SD> INFO: Done")
  }
 }

@@ -9,7 +9,23 @@ USE harary;
 //When you query your Stocks column family (table) by id, all "rows" of column values for that id will be returned, sorted by time. In Cassandra you can only specify order within a partitioning key (and not for your entire table), and your partitioning key is the first key listed in a compound primary key.
 
 // Create yearly first-degree graph table
-CREATE TABLE graph (source text, date text, target set<text>, community text, community_member set<text>, node_degree text, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DESC);
+CREATE TABLE graph (source text, 
+date text, 
+target set<text>, 
+community text, 
+community_member set<text>, 
+node_degree text, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DESC);
+
+CREATE TABLE graph (source text, 
+date text, 
+target set<text>, 
+community text, 
+community_member set<text>, 
+node_degree text, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DESC);
+
+CREATE TYPE vertexstate (community bigint, communitySigmaTot bigint, internalWeight bigint, nodeWeight bigint);
+CREATE TABLE lvgraph (source bigint PRIMARY KEY, vertexstate FROZEN<vertexstate>);
+
 
 // Create yearly community table
 CREATE TABLE community (source text, date text, community set<text>, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DESC);
