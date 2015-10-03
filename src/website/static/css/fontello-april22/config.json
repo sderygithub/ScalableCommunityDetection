@@ -1,0 +1,22 @@
+{
+  "name": "planet",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "a1bd477f92e956144558e6b6c671ed6e",
+      "css": "data-science-inv",
+      "code": 59392,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "117d7f4e196f826847929c6550734615",
+      "css": "globe",
+      "code": 59393,
+      "src": "mfglabs"
+    }
+  ]
+}

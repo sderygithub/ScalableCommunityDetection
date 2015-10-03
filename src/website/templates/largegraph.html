@@ -1,0 +1,102 @@
+<html lang="en" style="" class=" js no-touch csstransitions">
+    <head>
+        <title>Community Detection in Large Scale Networks - by Sebastien Dery</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="sebastien-dery">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Trends &amp; Bends of Academia - by Sebastien Dery">
+        <meta name="keywords" content="">
+
+        <!--CSS styles-->
+        
+        <!--/CSS styles-->
+
+        <!--Javascript files-->
+        
+        <!-- D3 -->
+        <script src="../static/js/d3/d3.min.js"></script>
+
+        <script src="../static/js/sigma/sigma.min.js"></script>
+        <script src="../static/js/sigma/plugins/sigma.parsers.json.min.js"></script>
+        <script src="../static/js/sigma/plugins/sigma.layout.forceAtlas2.min.js"></script>
+        <!--/Javascript files-->
+
+        <!--Custom Styles for demo only-->
+        <style type="text/css">
+            #container {
+                max-width: 100%;
+                height: 100%;
+                margin: auto;
+            }
+        </style>
+        <!--/Custom Styles-->
+    </head>
+
+    <body >
+        <div id="container"></div>
+    </body>
+
+    <script>
+        var color = d3.scale.category10();
+
+        function loadJSON(callback) {   
+            var xobj = new XMLHttpRequest();
+                xobj.overrideMimeType("application/json");
+            // Make actual query to server
+            //xobj.open('GET', '/hbase/', true);
+            // Test local results. Faster testing
+            xobj.open('GET', '../static/graphs/dblp.json', true);
+            // Test simple hardcoded graph
+            //xobj.open('GET', '../static/graphs/three-node-test.json', true);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    // Required use of an anonymous callback as .open 
+                    // will NOT return a value but simply returns undefined in asynchronous mode
+                    callback(xobj.responseText);
+                }
+            };
+            xobj.send(null);
+        }
+        console.log(color)
+        loadJSON(function(json) {
+            data = JSON.parse(json)
+            s = new sigma({
+                graph: data,
+                container: 'container',
+                settings: {
+                    defaultNodeColor: '#ec5148'
+                }
+            });
+            s.graph.nodes().forEach(function(n) {
+                n.originalColor = color(n.community);
+                n.color = color(n.community);
+            });
+            s.startForceAtlas2({worker: true, barnesHutOptimize: true, startingIterations: 10});
+        });
+
+        /*
+        document.getElementById('toggle-layout').addEventListener('click', function() {
+          if ((s.supervisor || {}).running) {
+            s.killForceAtlas2();
+            document.getElementById('toggle-layout').innerHTML = 'Start layout';
+          } else {
+            s.startForceAtlas2({worker: true});
+            document.getElementById('toggle-layout').innerHTML = 'Stop layout';
+          }
+        });
+        */
+
+        /*
+        document.getElementById('restart-camera').addEventListener('click', function() {
+              s.camera.goTo({
+                x: 0,
+                y: 0,
+                angle: 0,
+                ratio: 1
+              });
+            });
+        */
+    </script>
+</html>
+
+

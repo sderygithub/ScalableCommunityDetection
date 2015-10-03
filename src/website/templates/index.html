@@ -1,0 +1,214 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Graph Sight Website</title>
+		<link href="../static/css/landing/bootstrap.css" rel='stylesheet' type='text/css'/>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="../static/js/landing/jquery.min.js"></script>
+		
+		<!-- Animated Page -->
+		<link href="../static/css/landing/animate.css" rel="stylesheet" type="text/css" media="all">
+		<script src="../static/js/landing/wow.min.js"></script>
+		<script>
+			new WOW().init();
+		</script>
+
+		<!-- Landing -->
+		<script type="text/javascript" src="../static/js/landing/move-top.js"></script>
+		<script type="text/javascript" src="../static/js/landing/easing.js"></script>
+
+		 <!-- start-smoth-scrolling -->
+		<link href="../static/css/landing/style.css" rel='stylesheet' type='text/css'/>
+
+   		 <!-- Custom Theme files -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+   		 <!-- Specific Font -->
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+		<script>
+			$(function() {
+				var pull 		= $('#pull');
+					menu 		= $('nav ul');
+					menuHeight	= menu.height();
+				$(pull).on('click', function(e) {
+					e.preventDefault();
+					menu.slideToggle();
+				});
+				$(window).resize(function(){
+	        		var w = $(window).width();
+	        		if(w > 320 && menu.is(':hidden')) {
+	        			menu.removeAttr('style');
+	        		}
+	    		});
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<div class="bg">
+
+			<div id="home" class="header" data-wow-delay="0.4s">
+					<div class="top-header">
+						<div class="container">
+						<div class="logo">
+							
+						</div>
+
+						 <nav class="top-nav">
+							<ul class="top-nav">
+								<li class="active"><a href="#home" class="scroll">Home</a></li>
+								<li><a href="#services" class="scroll">Accomplishments</a></li>
+								<li><a href="#port" class="scroll">Features</a></li>
+								<li><a href="#world" class="scroll">World Trend</a></li>
+								<li><a href="http://graphsight.dery.xyz/graphviz" target="_blank" class="scroll">Demo</a></li>
+								<li><a href="http://graphsight.dery.xyz/slides" class="scroll">Slides</a></li>
+								<li><a href="#team" class="scroll">About Me</a></li>
+							</ul>
+							<a href="#" id="pull"><img src="../static/images/menu-icon.png" title="menu" /></a>
+						</nav>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="banner wow fadeIn" data-wow-delay="0.5s">
+				<div class="container">
+					<div class="banner-info text-center">
+						<h1>Graph Sight</h1><br />
+						<span> </span>
+						<p>Extracting knowledge through community detection in massively large graphs</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="services" class="services">
+			<div class="container">
+				<div class="service-head text-center">
+					<h2>Accomplishments</h2>
+				</div>
+
+				<div class="services-grids text-center">
+					<div class="col-md-4">
+						<div class="service-grid" data-wow-delay="0.4s">
+							<h3 class="text-center"><a href="#">Cluster Detection</a></h3>
+							<p class="text-justify">Detecting and quantifying clusters in graphs is a highly generalizable problem useful in a myriad of scenarios (e.g. understanding collective behaviour, large-image processing, etc.). Yet there is currently no implementation in GraphX for community detection. That's where I step in.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="service-grid" data-wow-delay="0.4s">
+							<h3 class="text-center"><a href="#">Gathering Insight</a></h3>
+							<p class="text-justify">Biomedical research is a rich field of study encompassing many area of multidisciplinary expertise. This tool aims to be a stepping stone towards empowering academics and medical staff for better decision making. Discovering new collaboration and obtaining a clearer understanding of crucial social links between entities are on the table.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="service-grid" data-wow-delay="0.4s">
+							<h3 class="text-center"><a href="#">Open Source</a></h3>
+							<p class="text-justify">By making this code publicly available, I hope to help others solving similar problems. Contributing this implementation to the GraphX team by merging with the main branch is also envisioned.</p>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix"> </div>
+
+		<div id="port" class="expertise">
+			<div class="expertice-grids">
+				<div class="col-md-12 " data-wow-delay="0.4s">
+					<div class="expertise-head text-center">
+						<h3>Features</h3>
+					</div>
+					<div class="expertise-left-inner-grids">
+						<div class="e-left-inner-grid">
+							<div class="e-left-inner-grid-left">
+								<span class="e-icon1"> </span>
+							</div>
+							<div class="e-left-inner-grid-right">
+								<h4 class="text-center">Yearly trends</h4>
+								<p class="text-justify">Personal and community-wide statistics on growth regarding coauthorship of scientific publication.</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="e-left-inner-grid">
+							<div class="e-left-inner-grid-left">
+								<span class="e-icon2"> </span>
+							</div>
+							<div class="e-left-inner-grid-right">
+								<h4 class="text-center">Graph analytics</h4>
+								<p class="text-justify">How are you positioned inside your community of peers? How could this affect your proficiency?</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="e-left-inner-grid">
+							<div class="e-left-inner-grid-left">
+								<span class="e-icon3"> </span>
+							</div>
+							<div class="e-left-inner-grid-right">
+								<h4 class="text-center">Hierarchical visualization</h4>
+								<p class="text-justify">Very large graphs are difficult to visualize in any interactive manner. By providing a hierarchical exploration of nodes we allow the user to uncover greater insights.</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="e-left-inner-grid">
+							<div class="e-left-inner-grid-left">
+								<span class="e-icon4"> </span>
+							</div>
+							<div class="e-left-inner-grid-right">
+								<h4 class="text-center">Something else</h4>
+								<p class="text-justify">Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus.</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="world" class="about">
+			<div class="wrap"> 
+				<div class="about-head">
+					<h1>World Trends</h1>
+					<span> </span>
+					<h4>Publication density per country</h4>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div id="container"></div>
+		</div>
+
+		<div id="team" class="team-members">
+			<div class="wrap">
+				<div class="tm-head" style="padding-bottom: 25px">
+					<h3>About Me</h3>
+					<div class="clearfix"> </div>
+				</div>
+				<p class="team-info">
+					My name is <span style="font-size: 32px">Sebastien Dery</span>, graduate student in Biomedical Engineering from McGill University, Canada. 
+					Please visit my <a href="http://dery.xyz" target="_blank" style="font-size: 24px">Personal Webpage</a> for more information about me.
+					I also encourage you to reach out on <a href="https://www.linkedin.com/in/sebastiendery" target="_blank" style="font-size: 28px">LinkedIn</a> or by email if we share similar interests or simply for a conversation!
+				</p>
+			</div>
+		</div>
+
+		<!-- WorldMap -->
+		<link href="../static/css/worldmap/geo.css" rel='stylesheet' type='text/css'/>
+		<script src="../static/js/worldmap/d3.min.js" type="text/javascript"></script>
+		<script src="../static/js/worldmap/topojson.v1.min.js" type="text/javascript"></script>
+		<script src="../static/js/worldmap/worldmap.js" type="text/javascript"></script>
+
+	</body>
+</html>
+
