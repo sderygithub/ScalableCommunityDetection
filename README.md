@@ -13,6 +13,10 @@ Networks are all around, with our position and connections within these networks
 
 In these 4 weeks, I implemented a decentralized distributed algorithm for community detection for massive networks (e.g. million nodes, billion edges). I further apply this enhanced capacity to the study of professional communities through co-authorship networks.
 
+######- Week 1######: Consider various alternatives for a project among which (Data mining tool of UN resolutions, scalable object recognition in images). Literature review.
+######- Week 2######:: Decide on graph processing using distributed system. Start prototyping and implementation in Scala.
+######- Week 3######:: Finalize algorithm and test using various graph size. Start
+######- Week 4######:: Front-end, interactive display and integration with
 The GraphX system is Spark's implementation of the Google Pregel architecture. Essentially every node in a graph can be programmed as if it were executing its own MapReduce program. 
 Further information on Spark GraphX can be found here:  [https://amplab.github.io/graphx/]()
 
@@ -22,7 +26,7 @@ The literature is rich in approaches to the clustering problem. For this work, I
 
 ![alt tag](https://github.com/sderygithub/HararyProject/blob/master/doc/images/modularity.png)
 
-Optimization of this measure provides adequate 
+Optimization of this measure provides an generalizable framework for the discovery of communities using various node measurements.
 
 ### BenchMarking ###
 
