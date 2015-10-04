@@ -11,12 +11,13 @@ An Insight Data Engineering Demonstration Project
 
 Networks are all around, with our position and connections within these networks deeply influencing the way we think and act. In what way and how much are hard questions to answer given the size and complexity of our relation with our surrounding. Can we identify sources of influences in specific network? Can we trace their evolution in time? These are example of questions central to this project.
 
-In these 4 weeks, I implemented a decentralized distributed algorithm for community detection for massive networks (e.g. million nodes, billion edges). I further apply this enhanced capacity to the study of professional communities through co-authorship networks.
+In these 4 weeks, I implemented a decentralized distributed algorithm for community detection for massive networks (e.g. million nodes, billion edges). I further apply this enhanced capacity to the study of scientific communities in Biomedical Research through co-authorship networks.
 
-######- Week 1######: Consider various alternatives for a project among which (Data mining tool of UN resolutions, scalable object recognition in images). Literature review.
-######- Week 2######:: Decide on graph processing using distributed system. Start prototyping and implementation in Scala.
-######- Week 3######:: Finalize algorithm and test using various graph size. Start
-######- Week 4######:: Front-end, interactive display and integration with
+**- Week 1**: Consider various alternatives for a project among which (Data mining tool of UN resolutions, scalable object recognition in images). Literature review of distributed processing.
+**- Week 2**: Decide on graph processing using distributed system. Beginning of prototype and implementation in Scala.
+**- Week 3**: Finalize algorithm and test using various graph size. Begin downloading PubMed data for use case scenario.
+**- Week 4**: Front-end, interactive display and integration with PubMed data.
+
 The GraphX system is Spark's implementation of the Google Pregel architecture. Essentially every node in a graph can be programmed as if it were executing its own MapReduce program. 
 Further information on Spark GraphX can be found here:  [https://amplab.github.io/graphx/]()
 
