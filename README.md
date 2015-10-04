@@ -2,7 +2,7 @@
 
 ## Graph Sight ##
 
-###Extracting knowledge through community detection in massively large graphs###
+####Extracting knowledge through community detection in massively large graphs####
 
 An Insight Data Engineering Demonstration Project 
 - by Sebastien Dery
@@ -18,10 +18,13 @@ Further information on Spark GraphX can be found here:  [https://amplab.github.i
 
 ### Algorithm ###
 
+![alt tag](https://github.com/sderygithub/HararyProject/blob/master/src/website/static/images/baner.png)
 
 ### BenchMarking ###
 
+#### NetworkX ####
 
+#### SNAP ####
 
 ### Use Case ###
 
