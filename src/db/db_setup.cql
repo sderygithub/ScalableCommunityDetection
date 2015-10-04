@@ -43,7 +43,16 @@ author_surname text,
 author_givenname text,
 PRIMARY KEY (author_fullname, pmid)) WITH CLUSTERING ORDER BY (community DESC);
 
-
+CREATE TABLE author-publication-table (
+author_id bigint, 
+doi text,
+journal text,
+title text,
+abstract text,
+year_accepted bigint,
+month_accepted bigint,
+day_accepted bigint
+PRIMARY KEY ((author_id), doi, year_accepted)) WITH CLUSTERING ORDER BY (community year_accepted);
 
 
 

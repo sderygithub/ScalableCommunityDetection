@@ -5,10 +5,24 @@ import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql._
 
 /*
-cp spark-cassandra-connector-assembly-1.4.0-M3-SNAPSHOT.jar ~/hararyproject/lib/spark-cassandra-connector-assembly-1.4.0-M3-SNAPSHOT.jar
-spark-submit --class demo_insert --master spark://ip-172-31-28-44:7077 --jars lib/spark-cassandra-connector-assembly-1.4.0-M3-SNAPSHOT.jar target/scala-2.10/hararyproject_2.10-1.0.jar
+ * Make you you have the spark-cassandra-connector.jar in your project lib directory
+ * cp spark-cassandra-connector-assembly-1.4.0-M3-SNAPSHOT.jar ~/hararyproject/lib/spark-cassandra-connector-assembly-1.4.0-M3-SNAPSHOT.jar
+ *
+ * Example spark-submit call for launching this code
+ * spark-submit --class demo_insert --master spark://ip-172-31-28-44:7077 --jars lib/spark-cassandra-connector-assembly-1.4.0-M3-SNAPSHOT.jar target/scala-2.10/hararyproject_2.10-1.0.jar
+ *
+ * Test Database Setup
+ *    CREATE TABLE graph (source text, 
+ *    date text, 
+ *    target set<text>, 
+ *    community text, 
+ *    community_member set<text>, 
+ *    node_degree text, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DESC);
+ * 
 */
-
+// ftp.ncbi.nlm.nih.gov/pub/pmc/articles.C-H.tar.gz">articles.C-H.tar.gz</a>
+// <a href="ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.C-H.tar.gz">articles.C-H.tar.gz</a>
+// <a href="ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.O-Z.tar.gz">articles.O-Z.tar.gz</a>
 object demo_insert {
     
     def main(args: Array[String]) {
