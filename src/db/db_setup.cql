@@ -20,39 +20,32 @@ node_degree text, PRIMARY KEY (source, date)) WITH CLUSTERING ORDER BY (date DES
 // Community table
 CREATE TABLE node_community_table (source bigint, community bigint, target set<bigint>, PRIMARY KEY (source, community)) WITH CLUSTERING ORDER BY (community DESC);
 
-// author-community-table
-CREATE TABLE node_community_table (source bigint, community bigint, target set<bigint>, PRIMARY KEY (source, community)) WITH CLUSTERING ORDER BY (community DESC);
 
-// author-community-table
-CREATE TABLE node_community_table (source bigint, community bigint, target set<bigint>, PRIMARY KEY (source, community)) WITH CLUSTERING ORDER BY (community DESC);
-
-// publication-table
 // How many publications does author X has
 CREATE TABLE publication-table (
 author_fullname text, 
-pmid bigint, 
 doi text, 
 journal text,
 title text,
 abstract text,
-keywords set<text>,
 year_accepted bigint,
 month_accepted bigint,
 day_accepted bigint,
-author_surname text,
-author_givenname text,
-PRIMARY KEY (author_fullname, pmid)) WITH CLUSTERING ORDER BY (community DESC);
+PRIMARY KEY (author_fullname, year_accepted)) WITH CLUSTERING ORDER BY (year_accepted DESC);
 
-CREATE TABLE author-publication-table (
-author_id bigint, 
+
+// Publication trends in Biomedical Research
+CREATE TABLE yearly_publication_table (
 doi text,
 journal text,
 title text,
 abstract text,
-year_accepted bigint,
-month_accepted bigint,
-day_accepted bigint
-PRIMARY KEY ((author_id), doi, year_accepted)) WITH CLUSTERING ORDER BY (community year_accepted);
+yearaccepted int,
+monthaccepted int,
+dayaccepted int,
+PRIMARY KEY ((doi), yearaccepted, monthaccepted, dayaccepted))
+WITH CLUSTERING ORDER BY (yearaccepted DESC);
+
 
 
 

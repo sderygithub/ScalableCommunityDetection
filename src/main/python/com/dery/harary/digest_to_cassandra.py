@@ -1,10 +1,9 @@
-import json
-from cassandra.cluster import Cluster
-
 import csv
 import json
 import ast
 import time
+
+from cassandra.cluster import Cluster
 
 # Necessary for large rows
 csv.field_size_limit(2147483647)
@@ -19,23 +18,27 @@ session = cluster.connect('harary')
 with open(filepath,'rb') as f:
         reader = csv.reader(f,delimiter='\t', quoting=csv.QUOTE_ALL)
         for row in reader:
-                # Get contributing countries
+                # Get Primary Key or skip
                 doi = row[0].strip()
-                journal = row[1].strip()
-                title = row[2].strip()
-                abstract = row[3].strip()
-                
-                date = ast.literal_eval(row[6])
-                
-                yearaccepted = int(date[2])
-                monthaccepted = int(date[1])
-                dayaccepted = int(date[0])
+                if not doi == "":
+                	
+	                # All entries are necessaryfor our analytics
+	                date = ast.literal_eval(row[6])
+	                if sum([d == None for d in date]) == 0:
+		                yearaccepted = int(date[2])
+		                monthaccepted = int(date[1])
+		                dayaccepted = int(date[0])
 
-                # Look for node in database
-				community_id = session.execute(
-					"""
-					INSERT INTO publication_table (doi, journal, title, yearaccepted, monthaccepted, dayaccepted)
-					VALUES (%s, %s, %s, %s, %s, %s)
-					""",
-					(doi,journal,title,yearaccepted,monthaccepted,dayaccepted))
+						# Optional properties
+		                journal = row[1].strip()
+		                title = row[2].strip()
+		                abstract = row[3].strip()
+
+		                # Note that you should use %s for all types of arguments, not just strings.
+						community_id = session.execute(
+							"""
+							INSERT INTO yearly_publication_table (doi, journal, title, yearaccepted, monthaccepted, dayaccepted)
+							VALUES (%s, %s, %s, %s, %s, %s)
+							""",
+							(doi,journal,title,yearaccepted,monthaccepted,dayaccepted))
 
